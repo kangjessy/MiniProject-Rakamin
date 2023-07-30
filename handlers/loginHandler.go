@@ -1,4 +1,3 @@
-// handlers/login_user.go
 package handlers
 
 import (
@@ -7,7 +6,6 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// Handler untuk login pengguna
 func LoginUser(c *fiber.Ctx) error {
     var loginData struct {
 		Email    string `json:"email"`
@@ -42,7 +40,6 @@ func LoginUser(c *fiber.Ctx) error {
     //     return fiber.ErrInternalServerError
     // }
 
-    // Jika login berhasil, berikan respons berhasil login sebagai respons JSON
     return c.JSON(fiber.Map{
         "message": "Login berhasil",
         // "token": token,

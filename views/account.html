@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h3 class="text-center mb-3">Data kamu</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>No Telepon</th>
+            <th>Tanggal Lahir</th>
+            <th>Jenis Kelamin</th>
+            <th>Tentang</th>
+            <th>Pekerjaan</th>
+            <th>ID Provinsi</th>
+            <th>ID Kota</th>
+            <th>Admin</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range .Users }}
+          <tr>
+            <td>{{ .ID }}</td>
+            <td>{{ .Nama }}</td>
+            <td>{{ .Email }}</td>
+            <td>{{ .Notelp }}</td>
+            <td>{{ .TanggalLahir }}</td>
+            <td>{{ .JenisKelamin }}</td>
+            <td>{{ .Tentang }}</td>
+            <td>{{ .Pekerjaan }}</td>
+            <td>{{ .IDProvinsi }}</td>
+            <td>{{ .IDKota }}</td>
+            <td>{{ if .IsAdmin }}Yes{{ else }}No{{ end }}</td>
+          </tr>
+          {{ end }}
+          <!-- Tambahkan baris lainnya untuk data pengguna berikutnya -->
+        </tbody>
+      </table>
+
+      <h3 class="text-center mb-3 mt-4">Toko</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nama Toko</th>
+            <th>Url Foto</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range .Tokos }}
+          <tr>
+            <td>{{ .NamaToko }}</td>
+            <td>{{ .UrlToko }}</td>
+          </tr>
+          {{ end }}
+          <!-- Tambahkan baris lainnya untuk data pengguna berikutnya -->
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

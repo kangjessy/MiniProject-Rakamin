@@ -11,13 +11,15 @@ import (
 )
 
 func main(){
+	// Menghubungkan ke database
 	dsn := "root:@tcp(127.0.0.1:3306)/miniproject?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-
+	// Mengecek apabila koneksi gagal
 	if err != nil{
 		panic("Failed to connect to database")
 	}
 
+	// Memanggil fungsi AutoMigrate
 	db.AutoMigrate(
 		&models.User{}, 
 		&models.Toko{}, 
@@ -33,8 +35,10 @@ func main(){
 		panic("Failed to run database migration")
 	}
 
+	// Memanggil fungsi Inisialiasi DB
 	handlers.InitDB(db)
 
+	// Fungsi fiber
 	app := fiber.New()
 
 	// Menambahkan custom middleware untuk logging

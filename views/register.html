@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div
+      class="container mt-5"
+      style="padding-left: 300px; padding-right: 300px"
+    >
+      <h3 class="text-center mb-3">Silakan Mendaftar</h3>
+      <form
+        class="bg-body-secondary p-4 rounded-4"
+        id="register-form"
+        action="/register"
+        method="POST"
+      >
+        <div class="form-group">
+          <label for="nama">Nama</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nama"
+            name="nama"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="katasandi">Kata Sandi</label>
+          <input
+            type="password"
+            class="form-control"
+            id="katasandi"
+            name="katasandi"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="notelp">Nomor Telepon</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="notelp"
+            name="notelp"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="tanggal_lahir">Tanggal Lahir</label>
+          <input
+            type="date"
+            class="form-control"
+            id="tanggal_lahir"
+            name="tanggal_lahir"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="jenis_kelamin">Jenis Kelamin</label>
+          <select
+            class="form-control"
+            id="jenis_kelamin"
+            name="jenis_kelamin"
+            required
+          >
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tentang">Tentang</label>
+          <textarea
+            class="form-control"
+            id="tentang"
+            name="tentang"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="pekerjaan">Pekerjaan</label>
+          <input
+            type="text"
+            class="form-control"
+            id="pekerjaan"
+            name="pekerjaan"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="id_provinsi">ID Provinsi</label>
+          <input
+            type="text"
+            class="form-control"
+            id="id_provinsi"
+            name="id_provinsi"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="id_kota">ID Kota</label>
+          <input
+            type="text"
+            class="form-control"
+            id="id_kota"
+            name="id_kota"
+            required
+          />
+        </div>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary mt-4">
+            Daftar sekarang
+          </button>
+        </div>
+        <small
+          >Sudah punya akun? <a href="/login.html">masuk sekarang</a></small
+        >
+      </form>
+    </div>
+  </body>
+</html>

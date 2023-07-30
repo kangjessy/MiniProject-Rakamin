@@ -17,27 +17,38 @@
       style="padding-left: 300px; padding-right: 300px"
     >
       <h3 class="text-center mb-3">Silakan login</h3>
-      <form class="bg-body-secondary p-4 rounded-4">
+      <form
+        class="bg-body-secondary p-4 rounded-4"
+        action="/login"
+        method="POST"
+      >
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
-          >
+          <label for="email" class="form-label">Email address</label>
           <input
             type="email"
             class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="email"
+            name="email"
+            required
           />
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <label for="katasandi" class="form-label">Kata Sandi</label>
           <input
             type="password"
             class="form-control"
-            id="exampleInputPassword1"
+            id="katasandi"
+            name="katasandi"
+            required
           />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="d-flex justify-content-between align-items-center">
+          <button type="submit" class="btn btn-primary">Masuk</button>
+          <small
+            >Belum memiliki akun?
+            <a href="/register.html">Daftar sekarang!</a></small
+          >
+        </div>
       </form>
     </div>
   </body>

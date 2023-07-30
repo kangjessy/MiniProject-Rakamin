@@ -6,18 +6,15 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// Handler untuk membuat produk baru
 func CreateProduk(c *fiber.Ctx) error {
 	var newProduk models.Produk
 
-	// Baca data produk baru dari body permintaan
 	if err := c.BodyParser(&newProduk); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"message": "Invalid request body",
 		})
 	}
 
-	// Simpan produk baru ke database
 	if err := db.Create(&newProduk).Error; err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": "Failed to create produk",
@@ -30,12 +27,11 @@ func CreateProduk(c *fiber.Ctx) error {
 	})
 }
 
-// Handler untuk mendapatkan daftar produk berdasarkan IDToko
 func GetProdukByTokoID(c *fiber.Ctx) error {
 	// Ambil IDToko dari parameter URL
 	idToko := c.Params("idToko")
 
-	// Cari daftar produk berdasarkan IDToko
+	// Mencari list produk berdasarkan IDToko
 	var produkList []models.Produk
 	if err := db.Where("id_toko = ?", idToko).Find(&produkList).Error; err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{

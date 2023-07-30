@@ -7,12 +7,10 @@ import (
 	"gorm.io/gorm"
 )
 
-// Handler untuk mengubah data toko
 func UpdateToko(c *fiber.Ctx, db *gorm.DB) error {
-	// Ambil data user yang telah diotentikasi dari context
-	user := c.Locals("user").(models.User)
+	user := c.Locals("user").(models.User) // Mengambil data user yang telah diotentikasi
 
-	// Baca data toko yang ingin diubah dari body permintaan
+	// Membaca data toko yang ingin diubah
 	var tokoData models.Toko
 	if err := c.BodyParser(&tokoData); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
@@ -20,7 +18,7 @@ func UpdateToko(c *fiber.Ctx, db *gorm.DB) error {
 		})
 	}
 
-	// Pastikan hanya pemilik toko yang dapat mengubah data toko
+	// Mengecek hanya pemilik toko yang dapat mengubah data toko
 	if tokoData.IDUser != user.ID {
 		return c.Status(fiber.StatusForbidden).JSON(fiber.Map{
 			"message": "Forbidden. You are not the owner of this toko.",
@@ -35,11 +33,11 @@ func UpdateToko(c *fiber.Ctx, db *gorm.DB) error {
 		})
 	}
 
-	// Lakukan perubahan yang diperlukan pada data toko
+	// Melakukan perubahan pada data toko
 	currentToko.NamaToko = tokoData.NamaToko
 	currentToko.UrlFoto = tokoData.UrlFoto
 
-	// Simpan perubahan ke dalam database
+	// Menyimpan ke database
 	if err := db.Save(&currentToko).Error; err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": "Failed to update toko data",

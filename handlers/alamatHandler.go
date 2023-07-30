@@ -6,18 +6,15 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// Handler untuk membuat alamat baru
 func CreateAlamat(c *fiber.Ctx) error {
 	var newAlamat models.Alamat
 
-	// Baca data alamat baru dari body permintaan
 	if err := c.BodyParser(&newAlamat); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"message": "Invalid request body",
 		})
 	}
 
-	// Simpan alamat baru ke database
 	result := db.Create(&newAlamat)
 	if result.Error != nil{
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{

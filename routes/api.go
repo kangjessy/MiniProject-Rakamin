@@ -14,6 +14,8 @@ func APIRoutes(app *fiber.App) {
 
     app.Post("/api/produk", handlers.CreateProduk)
 	app.Get("/api/produk/:idToko", handlers.GetProdukByTokoID)
+    app.Post("/log-produk", handlers.CreateLogProduk)
+    app.Post("/foto-produk", handlers.CreateFotoProduk)
 	
     app.Post("/categories", handlers.CreateCategory)
     app.Get("/categories", handlers.GetCategories)
@@ -21,10 +23,5 @@ func APIRoutes(app *fiber.App) {
     app.Post("/trx", handlers.CreateTrx)
     app.Post("/detail-trx", handlers.CreateDetailTrx)
 
-    app.Post("/log-produk", handlers.CreateLogProduk)
-
-    app.Post("/foto-produk", handlers.CreateFotoProduk)
-
-    // app.Get("/api/alamat", handlers.GetAlamatByUserID)
-	// app.Get("/api/v1/toko", handlers.GetTokoData)
+	app.Get("/api/toko", handlers.GetTokoData)
 }

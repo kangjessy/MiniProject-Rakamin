@@ -23,3 +23,21 @@ func Login(c *fiber.Ctx) error{
 
 	return temp.Execute(c.Response().BodyWriter(), nil)
 }
+
+func Register(c *fiber.Ctx) error{
+	temp, err := template.ParseFiles("views/register.html")
+	if err != nil{
+		panic(err)
+	}
+
+	return temp.Execute(c.Response().BodyWriter(), nil)
+}
+
+func Account(c *fiber.Ctx) error{
+	temp, err := template.ParseFiles("views/account.html")
+	if err != nil{
+		panic(err)
+	}
+
+	return temp.Execute(c.Response().BodyWriter(), nil)
+}
